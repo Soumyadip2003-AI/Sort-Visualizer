@@ -19,6 +19,7 @@ A modern, interactive **sorting algorithm visualizer** built with **React + Vite
 ## 🌐 Live Demo
 
 🚀 **Try it live:**
+
 https://sort-visualizer-1-gwic.onrender.com
 
 ---
@@ -35,6 +36,9 @@ Explore and compare different sorting techniques:
 * 🔀 **Merge Sort**
 * ⚡ **Quick Sort**
 * 🏔️ **Heap Sort**
+* 🧮 **Counting Sort**
+* 🪄 **Radix Sort**
+* 🐚 **Shell Sort**
 
 ### 🎮 Interactive Controls
 
@@ -43,6 +47,7 @@ Explore and compare different sorting techniques:
 * Generate new arrays
 * Start and stop visualizations
 * Switch algorithms while working
+* 🔄 Reset the visualization at any time
 
 ### 📊 Real-Time Statistics
 
@@ -60,6 +65,10 @@ Sorting doesn't have to run until the end.
 
 Stop an algorithm mid-execution and experiment with another algorithm instantly.
 
+### 🌓 Theme Toggler
+
+Switch between **Light Mode ☀️** and **Dark Mode 🌙** for a comfortable visualization experience.
+
 ---
 
 ## 🧠 Algorithms
@@ -72,19 +81,24 @@ Stop an algorithm mid-execution and experiment with another algorithm instantly.
 | 🔀 Merge Sort     | O(n log n) | O(n log n) | O(n log n) |     O(n) |    ✅   |
 | ⚡ Quick Sort      | O(n log n) | O(n log n) |      O(n²) | O(log n) |    ❌   |
 | 🏔️ Heap Sort     | O(n log n) | O(n log n) | O(n log n) |     O(1) |    ❌   |
+| 🧮 Counting Sort  |   O(n + k) |   O(n + k) |   O(n + k) | O(n + k) |    ✅   |
+| 🪄 Radix Sort     |      O(nk) |      O(nk) |      O(nk) | O(n + k) |    ✅   |
+| 🐚 Shell Sort     | O(n log n) |   O(n^1.5) |      O(n²) |     O(1) |    ❌   |
+
+> **Note:** Complexity for Shell Sort depends on the chosen gap sequence. The values shown are a simplified representation.
 
 ---
 
 ## 🛠️ Tech Stack
 
-**Frontend**
+### Frontend
 
 * ⚛️ React
 * ⚡ Vite
 * 🎨 CSS
 * 🟨 JavaScript
 
-**Development**
+### Development
 
 * 📦 npm
 * 🔧 Git & GitHub
@@ -121,25 +135,18 @@ npm install
 npm run dev
 ```
 
-Open the local URL displayed in your terminal.
+Open `http://localhost:5173` in your browser.
 
 ---
 
-## 📁 Project Structure
+## 🚧 Future Improvements
 
-```text
-sort-visualizer/
-├── public/
-├── src/
-│   ├── components/
-│   ├── algorithms/
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── package.json
-├── vite.config.js
-└── README.md
-```
+* [ ] 📱 Advanced mobile optimization
+* [ ] ⚔️ Algorithm comparison mode
+* [ ] ✏️ Custom array input
+* [ ] 🔊 Sound effects
+* [ ] 👣 Step-by-step execution
+* [ ] 📈 Advanced performance graphs
 
 ---
 
@@ -147,7 +154,7 @@ sort-visualizer/
 
 Sorting algorithms are much easier to understand when you can **see them in action**.
 
-This project was built to make algorithm learning more intuitive by turning abstract operations such as comparisons, swaps, and partitions into an interactive visual experience.
+This project turns abstract operations such as comparisons, swaps, partitions, and recursion into an interactive visual experience.
 
 Instead of simply reading:
 
@@ -155,7 +162,7 @@ Instead of simply reading:
 Quick Sort → O(n log n)
 ```
 
-you can actually **watch the algorithm divide and sort the array step by step.**
+you can actually **watch the algorithm divide, compare, and sort the array step by step.**
 
 ---
 
@@ -169,10 +176,8 @@ Through this project, you can explore:
 * Sorting strategies
 * React state management
 * Asynchronous animations
-* Performance considerations
+* Performance optimization
 * Interactive UI development
-
-
 
 ---
 

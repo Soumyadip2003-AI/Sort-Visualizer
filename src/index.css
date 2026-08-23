@@ -1,34 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  --bg-primary: #0A0A0A;
-  --bg-secondary: #111111;
-  --bg-tertiary: #1A1A1A;
-  
-  --text-primary: #EDEDED;
-  --text-secondary: #A1A1AA;
-  --text-muted: #52525B;
-  
-  --accent: #8B5CF6; /* Electric Violet */
-  --accent-hover: #A78BFA;
-  
-  --border-color: #27272A;
-  --border-subtle: #1E1E1E;
-  
-  /* Bar Colors */
-  --bar-unsorted: #3F3F46;
-  --bar-comparing: #EAB308; /* Yellow */
-  --bar-swapping: #EF4444; /* Red */
-  --bar-sorted: #22C55E; /* Green */
-  --bar-pivot: #A855F7; /* Purple */
-  --bar-current: #3B82F6; /* Blue */
-  
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --bg-primary: #050508;
+  --bg-secondary: rgba(255, 255, 255, 0.03);
+  --bg-tertiary: rgba(255, 255, 255, 0.06);
+
+  --text-primary: #F0F0F5;
+  --text-secondary: #8B8B9E;
+  --text-muted: #4A4A5C;
+
+  --accent: #7C5CFC;
+  --accent-hover: #9B7FFF;
+  --accent-glow: rgba(124, 92, 252, 0.25);
+
+  --border-color: rgba(255, 255, 255, 0.06);
+  --border-subtle: rgba(255, 255, 255, 0.03);
+
+  --bar-unsorted: #2A2A3A;
+  --bar-comparing: #FACC15;
+  --bar-swapping: #F43F5E;
+  --bar-sorted: #34D399;
+  --bar-pivot: #A78BFA;
+  --bar-current: #38BDF8;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover: rgba(255, 255, 255, 0.08);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.4);
+  --shadow-glow: 0 0 40px rgba(124, 92, 252, 0.08);
+}
+
+.light-theme {
+  --bg-primary: #F5F5F7;
+  --bg-secondary: rgba(0, 0, 0, 0.02);
+  --bg-tertiary: rgba(0, 0, 0, 0.04);
+
+  --text-primary: #1A1A2E;
+  --text-secondary: #64648C;
+  --text-muted: #9E9EB8;
+
+  --border-color: rgba(0, 0, 0, 0.06);
+  --border-subtle: rgba(0, 0, 0, 0.03);
+
+  --bar-unsorted: #C8C8D8;
+
+  --glass: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-hover: rgba(255, 255, 255, 0.8);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.08);
+  --shadow-glow: 0 0 40px rgba(124, 92, 252, 0.04);
 }
 
 * {
@@ -38,34 +66,25 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .mono {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* App Layout */
-.app-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  padding: 16px;
-  gap: 16px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-/* Base UI Components */
 .panel {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 button {
@@ -74,7 +93,7 @@ button {
   border: none;
   cursor: pointer;
   color: inherit;
-  transition: all 150ms ease;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 input[type="range"] {
@@ -82,21 +101,7 @@ input[type="range"] {
   cursor: pointer;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--bg-tertiary);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--border-color);
-}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-tertiary); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-color); }
