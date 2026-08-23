@@ -1,2 +1,21 @@
-It is a sort visualizer.
-A sorting visualizer is a tool that demonstrates how sorting algorithms work by showing the steps they take to sort data and it is based on python
+# Sort Visualizer
+
+A web-based sorting algorithm visualizer built with React and Vite.
+
+## Features
+
+- **Algorithms**: Bubble, Selection, Insertion, Merge, Quick, and Heap sort.
+- **Controls**: Adjust array size and sorting speed.
+- **Interrupt**: Stop sorting mid-execution or switch algorithms on the fly.
+- **Stats**: Real-time tracking of comparisons, swaps, time elapsed, and time/space complexity.
+
+## Running Locally
+
+Requires Node.js.
+
+```bash
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
