@@ -19,3 +19,13 @@ npm run dev
 ```
 
 Open `http://localhost:5173` in your browser.
+
+## Future Improvements
+
+- Mobile optimization
+- Radix Sort, Counting Sort, Shell Sort
+- Algorithm comparison mode
+- Custom array input
+- Sound effects & step-by-step execution
+- Performance graphs
+- Theme toggler

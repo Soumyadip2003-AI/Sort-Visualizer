@@ -185,3 +185,67 @@ function* heapify(arr, n, i) {
     yield* heapify(arr, n, largest);
   }
 }
+
+export function* shellSort(array) {
+  let arr = [...array];
+  let n = arr.length;
+  for (let gap = Math.floor(n/2); gap > 0; gap = Math.floor(gap/2)) {
+    for (let i = gap; i < n; i++) {
+      let temp = arr[i];
+      let j;
+      yield { type: 'compare', indices: [i, i-gap] };
+      for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+        yield { type: 'compare', indices: [j-gap, i] };
+        yield { type: 'overwrite', indices: [j], value: arr[j - gap] };
+        arr[j] = arr[j - gap];
+      }
+      yield { type: 'overwrite', indices: [j], value: temp };
+      arr[j] = temp;
+    }
+  }
+  for(let i=0; i<n; i++) yield { type: 'sorted', indices: [i] };
+}
+
+export function* countingSort(array) {
+  let arr = [...array];
+  let max = Math.max(...arr);
+  let count = new Array(max + 1).fill(0);
+  let output = new Array(arr.length).fill(0);
+  for (let i = 0; i < arr.length; i++) {
+    yield { type: 'compare', indices: [i] };
+    count[arr[i]]++;
+  }
+  for (let i = 1; i <= max; i++) count[i] += count[i - 1];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    output[count[arr[i]] - 1] = arr[i];
+    count[arr[i]]--;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    yield { type: 'overwrite', indices: [i], value: output[i] };
+    arr[i] = output[i];
+  }
+  for(let i=0; i<arr.length; i++) yield { type: 'sorted', indices: [i] };
+}
+
+export function* radixSort(array) {
+  let arr = [...array];
+  let max = Math.max(...arr);
+  for (let exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
+    let output = new Array(arr.length).fill(0);
+    let count = new Array(10).fill(0);
+    for (let i = 0; i < arr.length; i++) {
+      yield { type: 'compare', indices: [i] };
+      count[Math.floor(arr[i] / exp) % 10]++;
+    }
+    for (let i = 1; i < 10; i++) count[i] += count[i - 1];
+    for (let i = arr.length - 1; i >= 0; i--) {
+      output[count[Math.floor(arr[i] / exp) % 10] - 1] = arr[i];
+      count[Math.floor(arr[i] / exp) % 10]--;
+    }
+    for (let i = 0; i < arr.length; i++) {
+      yield { type: 'overwrite', indices: [i], value: output[i] };
+      arr[i] = output[i];
+    }
+  }
+  for(let i=0; i<arr.length; i++) yield { type: 'sorted', indices: [i] };
+}
